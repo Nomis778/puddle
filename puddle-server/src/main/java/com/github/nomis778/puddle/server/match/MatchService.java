@@ -1,22 +1,34 @@
 package com.github.nomis778.puddle.server.match;
 
+import com.github.nomis778.puddle.server.api.ApiService;
 import com.github.nomis778.puddle.server.match.model.Match;
 import com.github.nomis778.puddle.server.team.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.client.RestClient;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MatchService {
+    private final ApiService apiService;
+
     private final MatchRepository matchRepository;
     private final TeamRepository teamRepository;
 
     @Autowired
-    public MatchService(MatchRepository matchRepository, TeamRepository teamRepository) {
+    public MatchService(ApiService apiService,
+                        MatchRepository matchRepository,
+                        TeamRepository teamRepository) {
+
+        this.apiService = apiService;
         this.matchRepository = matchRepository;
         this.teamRepository = teamRepository;
     }
 
     public void updateMatches() {
-        for(Match m: r.matches())
+        Match[] matches = apiService.getCurrentMatches();
+        for(Match m: matches) {
+            teamRepository.save(m.getHomeTeam());
+            teamRepository.save(m.getAwayTeam());
             matchRepository.save(m);
+        }
     }
 }

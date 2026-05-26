@@ -7,21 +7,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MatchScheduler {
-    private final MatchService service;
+    private final MatchService matchService;
 
     @Autowired
-    public MatchScheduler(MatchService service) {
-        this.service = service;
+    public MatchScheduler(MatchService matchService) {
+        this.matchService = matchService;
     }
 
     @PostConstruct
     public void init() {
-        service.updateMatches();
+        matchService.updateMatches();
     }
 
     // Scheduled at the start of every day
     @Scheduled(cron = "0 0 0 * * *")
     public void scheduledUpdate() {
-        service.updateMatches();
+        matchService.updateMatches();
     }
 }
