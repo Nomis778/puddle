@@ -2,4 +2,4 @@ package com.github.nomis778.puddle.server.api.model;
 
 import com.github.nomis778.puddle.server.match.model.Match;
 
-public record Response(Match[] matches) {}
+public record MatchResponse(Match[] matches) {}
