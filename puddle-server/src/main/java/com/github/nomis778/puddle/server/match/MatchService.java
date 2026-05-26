@@ -1,40 +1,28 @@
-package com.github.nomis778.puddle.server.updatestate;
+package com.github.nomis778.puddle.server.match;
 
-import com.github.nomis778.puddle.server.updatestate.model.Match;
-import com.github.nomis778.puddle.server.updatestate.model.Response;
-import jakarta.annotation.PostConstruct;
+import com.github.nomis778.puddle.server.match.model.Match;
+import com.github.nomis778.puddle.server.match.model.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 import java.time.LocalDate;
 
-@Component
-public class MatchHandler {
-
-    private static final Logger log = LoggerFactory.getLogger(MatchHandler.class);
+public class MatchService {
+    private static final Logger log = LoggerFactory.getLogger(MatchScheduler.class);
 
     @Value("${api.key}")
     private String apiKey;
 
     private final RestClient footballAPI;
 
-    public MatchHandler(RestClient.Builder restClientBuilder) {
+    public MatchService(RestClient.Builder restClientBuilder) {
         this.footballAPI = restClientBuilder
                 .baseUrl("http://api.football-data.org/v4")
                 .build();
     }
 
-    @PostConstruct
-    public void init() {
-        updateMatches();
-    }
-
-    // Scheduled at the start of every day
-    @Scheduled(cron = "0 0 0 * * *")
     public void updateMatches() {
         LocalDate today = LocalDate.now();
         String dateFrom = today.minusDays(2).toString();
@@ -50,6 +38,6 @@ public class MatchHandler {
                 .retrieve().body(Response.class);
 
         for(Match m: r.matches())
-            log.info("%d: %s vs %s".formatted(m.id(), m.homeTeam().shortName(), m.awayTeam().shortName()));
+            log.info(m.toString());
     }
 }
