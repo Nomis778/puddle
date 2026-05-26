@@ -23,12 +23,23 @@ public class MatchService {
         this.teamRepository = teamRepository;
     }
 
-    public void updateMatches() {
+    public void addNewMatches() {
         Match[] matches = apiService.getCurrentMatches();
         for(Match m: matches) {
             teamRepository.save(m.getHomeTeam());
             teamRepository.save(m.getAwayTeam());
             matchRepository.save(m);
         }
+    }
+
+    public void dropOldMatches() {
+        Match[] matches = apiService.getOldMatches();
+        for(Match m: matches) {
+            matchRepository.delete(m);
+        }
+    }
+
+    public void dropAllMatches() {
+        matchRepository.deleteAll();
     }
 }

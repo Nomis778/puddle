@@ -12,6 +12,8 @@ import java.time.LocalDate;
 
 @Service
 public class ApiService {
+    private static Logger log = LoggerFactory.getLogger(ApiService.class);
+
     @Value("${api.key}")
     private String apiKey;
 
@@ -21,6 +23,23 @@ public class ApiService {
         this.footballAPI = restClientBuilder
                 .baseUrl("http://api.football-data.org/v4")
                 .build();
+    }
+
+    public Match[] getOldMatches() {
+        LocalDate today = LocalDate.now();
+        String dateFrom = today.minusDays(4).toString();
+        String dateTo = today.minusDays(2).toString();
+
+        MatchResponse mr = footballAPI.get()
+                .uri(uri -> uri
+                        .path("/matches")
+                        .queryParam("dateFrom", dateFrom)
+                        .queryParam("dateTo", dateTo)
+                        .build())
+                .header("X-Auth-Token", apiKey)
+                .retrieve().body(MatchResponse.class);
+
+        return mr.matches();
     }
 
     public Match[] getCurrentMatches() {

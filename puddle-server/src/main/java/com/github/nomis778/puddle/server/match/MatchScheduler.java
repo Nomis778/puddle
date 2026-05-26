@@ -16,12 +16,14 @@ public class MatchScheduler {
 
     @PostConstruct
     public void init() {
-        matchService.updateMatches();
+        matchService.dropAllMatches();
+        matchService.addNewMatches();
     }
 
     // Scheduled at the start of every day
     @Scheduled(cron = "0 0 0 * * *")
     public void scheduledUpdate() {
-        matchService.updateMatches();
+        matchService.dropOldMatches();
+        matchService.addNewMatches();
     }
 }
