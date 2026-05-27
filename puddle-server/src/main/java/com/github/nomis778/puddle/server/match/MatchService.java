@@ -7,6 +7,8 @@ import com.github.nomis778.puddle.server.team.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MatchService {
     private final ApiService apiService;
@@ -46,5 +48,9 @@ public class MatchService {
 
     public void dropAllMatches() {
         matchRepository.deleteAll();
+    }
+
+    public List<Match> getCurrentMatches() {
+        return matchRepository.findAll();
     }
 }
