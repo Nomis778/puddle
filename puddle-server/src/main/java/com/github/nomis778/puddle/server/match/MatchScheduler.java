@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MatchScheduler {
+    private static final int TWICE_PER_MINUTE = 30000;
+
     private final MatchService matchService;
 
     @Autowired
@@ -22,14 +24,13 @@ public class MatchScheduler {
 
     // Scheduled at the start of every day
     @Scheduled(cron = "0 0 0 * * *")
-    public void scheduledMatchChange() {
+    public void scheduledMatchUpdate() {
         matchService.dropOldMatches();
         matchService.updateMatches();
     }
 
-    // Scheduled at the start of every minute
-    @Scheduled(cron = "0 * * * * *")
-    public void scheduledMatchUpdate() {
+    @Scheduled(fixedRate = TWICE_PER_MINUTE)
+    public void scheduledMatchInfoUpdate() {
         matchService.updateMatches();
     }
 }
