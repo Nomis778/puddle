@@ -1,5 +1,6 @@
 package com.github.nomis778.puddle.server.match.model;
 
+import com.github.nomis778.puddle.server.competition.model.Competition;
 import jakarta.persistence.*;
 import com.github.nomis778.puddle.server.team.model.Team;
 
@@ -15,27 +16,56 @@ public class Match {
     @ManyToOne
     private Team awayTeam;
 
-    public Match() {}
+    @ManyToOne
+    private Competition competition;
 
-    public Match(long id, Team homeTeam, Team awayTeam) {
-        this.id = id;
-        this.homeTeam = homeTeam;
-        this.awayTeam = awayTeam;
-    }
+    @Embedded
+    private Score score;
+
+
+    public Match() {}
 
     public String toString() {
         return "%d: %s vs %s".formatted(id, homeTeam.getShortName(), awayTeam.getShortName());
     }
 
-    public long getId(){ return id; }
+    public Team getHomeTeam() {
+        return homeTeam;
+    }
 
-    public Team getHomeTeam() { return homeTeam; }
+    public void setHomeTeam(Team homeTeam) {
+        this.homeTeam = homeTeam;
+    }
 
-    public Team getAwayTeam() { return awayTeam; }
+    public Team getAwayTeam() {
+        return awayTeam;
+    }
 
-    public void setHomeTeam(Team homeTeam) { this.homeTeam = homeTeam; }
+    public void setAwayTeam(Team awayTeam) {
+        this.awayTeam = awayTeam;
+    }
 
-    public void setId(long id) { this.id = id; }
+    public long getId() {
+        return id;
+    }
 
-    public void setAwayTeam(Team awayTeam) { this.awayTeam = awayTeam; }
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Competition getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(Competition competition) {
+        this.competition = competition;
+    }
+
+    public Score getScore() {
+        return score;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
+    }
 }
