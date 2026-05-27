@@ -7,6 +7,7 @@ public class Team {
     @Id
     private long id;
     private String shortName;
+    private String crest;
 
     public Team() {}
 
@@ -24,5 +25,13 @@ public class Team {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getCrest() {
+        return crest;
+    }
+
+    public void setCrest(String crest) {
+        this.crest = crest;
     }
 }
