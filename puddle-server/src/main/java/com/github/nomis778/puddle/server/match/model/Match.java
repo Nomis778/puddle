@@ -4,6 +4,8 @@ import com.github.nomis778.puddle.server.competition.model.Competition;
 import jakarta.persistence.*;
 import com.github.nomis778.puddle.server.team.model.Team;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "matches")
 public class Match {
@@ -21,6 +23,11 @@ public class Match {
 
     @Embedded
     private Score score;
+
+    private String status;
+
+    @Column(name = "event_date", columnDefinition = "DATETIME(0)")
+    private LocalDateTime utcDate;
 
 
     public Match() {}
@@ -67,5 +74,21 @@ public class Match {
 
     public void setScore(Score score) {
         this.score = score;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getUtcDate() {
+        return utcDate;
+    }
+
+    public void setUtcDate(LocalDateTime utcDate) {
+        this.utcDate = utcDate;
     }
 }
