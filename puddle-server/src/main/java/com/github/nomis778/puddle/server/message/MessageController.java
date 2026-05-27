@@ -15,7 +15,7 @@ public class MessageController {
         this.messageService = messageService;
     }
 
-    @MessageMapping
+    @MessageMapping("/send")
     public void send(@Payload Message msg) {
         messageService.send(msg);
     }
