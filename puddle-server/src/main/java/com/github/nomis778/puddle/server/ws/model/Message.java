@@ -1,9 +1,8 @@
 package com.github.nomis778.puddle.server.ws.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.github.nomis778.puddle.server.user.model.PublicUser;
+import com.github.nomis778.puddle.server.user.model.User;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -13,13 +12,22 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    private String sender;
-    private String content;
+    @OneToMany
+    private User sender;
+
     private long matchId;
+    private String content;
 
     LocalDateTime timeStamp;
 
     public Message() {}
+
+    public Message(User sender, long matchId, String content) {
+        this.sender = sender;
+        this.matchId = matchId;
+        this.content = content;
+        this.timeStamp = LocalDateTime.now();
+    }
 
     public long getId() {
         return id;
@@ -29,11 +37,11 @@ public class Message {
         this.id = id;
     }
 
-    public String getSender() {
+    public User getSender() {
         return sender;
     }
 
-    public void setSender(String sender) {
+    public void setSender(User sender) {
         this.sender = sender;
     }
 
