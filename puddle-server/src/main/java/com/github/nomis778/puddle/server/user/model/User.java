@@ -12,9 +12,16 @@ public class User {
 
     @Column(unique = true)
     private String username;
+
+    @Column(name = "password_hash")
     private String password;
 
     public User() {}
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public String getUsername() {
         return username;
