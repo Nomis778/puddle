@@ -1,24 +1,14 @@
 package com.github.nomis778.puddle.client;
 
-public class Message {
-    private String sender;
+public class MessageRequest {
     private String content;
     private long matchId;
 
-    public Message() {} // required by Jackson
+    public MessageRequest() {}
 
-    public Message(String sender, String content, long matchId) {
-        this.sender = sender;
+    public MessageRequest(String content, long matchId) {
         this.content = content;
         this.matchId = matchId;
-    }
-
-    public String getSender() {
-        return sender;
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
     }
 
     public String getContent() {
