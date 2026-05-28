@@ -1,4 +1,4 @@
-package com.github.nomis778.puddle.server.team.model;
+package com.github.nomis778.puddle.server.match.model;
 
 import jakarta.persistence.*;
 

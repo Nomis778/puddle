@@ -1,4 +1,4 @@
-package com.github.nomis778.puddle.server.competition.model;
+package com.github.nomis778.puddle.server.match.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,9 +1,7 @@
 package com.github.nomis778.puddle.server.match;
 
 import com.github.nomis778.puddle.server.api.ApiService;
-import com.github.nomis778.puddle.server.competition.CompetitionRepository;
 import com.github.nomis778.puddle.server.match.model.Match;
-import com.github.nomis778.puddle.server.team.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

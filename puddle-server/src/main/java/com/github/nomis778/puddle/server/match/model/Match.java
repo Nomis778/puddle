@@ -1,8 +1,6 @@
 package com.github.nomis778.puddle.server.match.model;
 
-import com.github.nomis778.puddle.server.competition.model.Competition;
 import jakarta.persistence.*;
-import com.github.nomis778.puddle.server.team.model.Team;
 
 import java.time.LocalDateTime;
 

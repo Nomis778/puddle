@@ -23,7 +23,7 @@ public class AuthController {
             authService.registerUser(user);
             String jwt = authService.login(user);
             return new ResponseEntity<>(jwt, HttpStatus.OK);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalStateException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>("Error: Login failed", HttpStatus.UNAUTHORIZED);
