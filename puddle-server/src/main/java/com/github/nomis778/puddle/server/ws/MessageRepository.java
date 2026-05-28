@@ -1,6 +1,6 @@
-package com.github.nomis778.puddle.server.message;
+package com.github.nomis778.puddle.server.ws;
 
-import com.github.nomis778.puddle.server.message.model.Message;
+import com.github.nomis778.puddle.server.ws.model.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {}

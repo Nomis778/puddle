@@ -1,6 +1,6 @@
-package com.github.nomis778.puddle.server.message;
+package com.github.nomis778.puddle.server.ws;
 
-import com.github.nomis778.puddle.server.message.model.Message;
+import com.github.nomis778.puddle.server.ws.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
