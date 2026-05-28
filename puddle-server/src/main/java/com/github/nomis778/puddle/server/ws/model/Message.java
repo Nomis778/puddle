@@ -12,7 +12,7 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    @OneToMany
+    @ManyToOne
     private User sender;
 
     private long matchId;
