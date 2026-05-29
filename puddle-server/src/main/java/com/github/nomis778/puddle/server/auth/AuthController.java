@@ -21,12 +21,9 @@ public class AuthController {
     public ResponseEntity<String> registerAndGetToken(@RequestBody User user) {
         try {
             authService.registerUser(user);
-            String jwt = authService.login(user);
-            return new ResponseEntity<>(jwt, HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (IllegalStateException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-        } catch (BadCredentialsException e) {
-            return new ResponseEntity<>("Error: Login failed", HttpStatus.UNAUTHORIZED);
         }
     }
 
