@@ -4,6 +4,7 @@ import com.github.nomis778.puddle.server.user.UserRepository;
 import com.github.nomis778.puddle.server.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -45,6 +46,8 @@ public class AuthService {
 
     public String login(@RequestBody User user) {
         User toMatch = userRepository.findByUsername(user.getUsername());
+        if(toMatch == null)
+            throw new BadCredentialsException("");
         Long idToMatch = toMatch.getId();
 
         Authentication authentication = authManager.authenticate(

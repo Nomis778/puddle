@@ -33,7 +33,7 @@ public class AuthController {
             String jwt = authService.login(user);
             return new ResponseEntity<>(jwt, HttpStatus.OK);
         } catch (BadCredentialsException e) {
-            return new ResponseEntity<>("Error: Login failed " + e.getMessage(), HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("Error: Invalid username or password", HttpStatus.UNAUTHORIZED);
         }
     }
 }
