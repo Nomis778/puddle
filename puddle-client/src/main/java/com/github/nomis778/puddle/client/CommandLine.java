@@ -3,6 +3,9 @@ package com.github.nomis778.puddle.client;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.github.nomis778.puddle.client.chat.MessageRequest;
+import com.github.nomis778.puddle.client.chat.MessageResponse;
+import com.github.nomis778.puddle.client.chat.PuddleStompSessionHandler;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.simp.stomp.*;
 import org.springframework.web.socket.WebSocketHttpHeaders;
@@ -10,7 +13,6 @@ import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 import org.springframework.web.socket.messaging.WebSocketStompClient;
 
 import java.lang.reflect.Type;
-import java.lang.runtime.ObjectMethods;
 import java.util.Scanner;
 
 public class CommandLine {

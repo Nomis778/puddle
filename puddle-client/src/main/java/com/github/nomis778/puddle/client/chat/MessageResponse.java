@@ -1,4 +1,6 @@
-package com.github.nomis778.puddle.client;
+package com.github.nomis778.puddle.client.chat;
+
+import com.github.nomis778.puddle.client.PublicUser;
 
 import java.time.LocalDateTime;
 

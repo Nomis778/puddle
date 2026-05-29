@@ -1,4 +1,4 @@
-package com.github.nomis778.puddle.client;
+package com.github.nomis778.puddle.client.chat;
 
 public class MessageRequest {
     private String content;
