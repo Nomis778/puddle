@@ -15,6 +15,6 @@
     <Label text="Welcome to Puddle!" />
     <TextField fx:id="usernameField" promptText="Username" />
     <PasswordField fx:id="passwordField" promptText="Password" />
-    <Button mnemonicParsing="false" onAction="#register" prefHeight="25.0" prefWidth="150.0" text="Sign up" />
+    <Button mnemonicParsing="false" onAction="#registerAndLogIn" prefHeight="25.0" prefWidth="150.0" text="Sign up" />
    <Label onMouseClicked="#navigateToLoginPage" prefHeight="17.0" prefWidth="144.0" text="I already have an account!" />
 </VBox>

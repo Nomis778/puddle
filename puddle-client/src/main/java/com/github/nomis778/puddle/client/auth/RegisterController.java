@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.springframework.web.client.RestClientException;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -19,12 +20,17 @@ public class RegisterController {
     private PasswordField passwordField;
 
     @FXML
-    public void register(ActionEvent e) throws IOException {
+    public void registerAndLogIn(ActionEvent event) throws IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        AuthService.register(username, password);
-        NavigationUtil.navigateTo(e, "chat_view.fxml");
+        try {
+            AuthService.register(username, password);
+            AuthService.logIn(username, password);
+            NavigationUtil.navigateTo(event, "chat_view.fxml");
+        } catch (RestClientException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @FXML
