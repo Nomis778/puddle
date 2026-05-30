@@ -12,6 +12,10 @@ public class MessageResponse {
 
     public MessageResponse() {}
 
+    public MessageResponse(String content) {
+        this.content = content;
+    }
+
     public PublicUser getSender() {
         return sender;
     }

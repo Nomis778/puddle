@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.nomis778.puddle.client.chat.MessageResponse;
-import com.github.nomis778.puddle.client.chat.PuddleStompSessionHandler;
 import com.github.nomis778.puddle.client.shared.HttpSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +14,7 @@ import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 import org.springframework.web.socket.messaging.WebSocketStompClient;
 
 import java.lang.reflect.Type;
+import java.time.LocalDateTime;
 
 public class ChatService {
     private static final String WS_URL = "ws://localhost:8080/ws";
@@ -61,7 +61,7 @@ public class ChatService {
         }
         messages.clear();
         messages.addAll(fetchOldMessages(matchId));
-        messages.add()
+        messages.add(new MessageResponse("Welcome to the chat!"));
         subscribe(matchId);
     }
 
@@ -89,6 +89,7 @@ public class ChatService {
         MessageResponse mr = new MessageResponse();
         mr.setSender(new PublicUser(1, "SVERKER"));
         mr.setContent("OLD MESSAGEadwa");
+        mr.setTimeStamp(LocalDateTime.now());
         return new MessageResponse[] {mr};
     }
 }
