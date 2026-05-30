@@ -21,7 +21,7 @@ public class MatchListCell extends ListCell<Match> {
 
         LocalDateTime date = match.utcDate();
         Label day = new Label(date.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.ENGLISH));
-        Label time = new Label("%02d:%02d".formatted(date.getHour(), date.getMinute()));
+        Label time = new Label("%02d:%02d UTC".formatted(date.getHour(), date.getMinute()));
         Label homeTeam = new Label(match.homeTeam().shortName());
 
         Match.Score s = match.score();
