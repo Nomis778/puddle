@@ -2,6 +2,7 @@ package com.github.nomis778.puddle.client;
 
 import com.github.nomis778.puddle.client.chat.MessageResponse;
 import javafx.application.Platform;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -17,7 +18,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.concurrent.CompletableFuture;
 
-public class ChatViewController implements Initializable {
+public class DashBoardController implements Initializable {
     private final MatchService matchService = new MatchService();
     private ArrayList<ListView<Match>> allListViews = new ArrayList<>();
 
@@ -50,8 +51,8 @@ public class ChatViewController implements Initializable {
         matchService.selectedMatchIdProperty().addListener((obs, old, newVal) -> {
             chatService.connectToMatch((long) newVal);
         });
-        chatView.setItems(chatService.getMessages());
-        chatView.setCellFactory(lv -> new MessageListCell());
+
+        initChatView();
     }
 
     @FXML
@@ -126,5 +127,14 @@ public class ChatViewController implements Initializable {
                         awayScore.setText("");
                     }
                 }));
+    }
+
+    private void initChatView() {
+        var messages = chatService.getMessages();
+        chatView.setItems(messages);
+        chatView.setCellFactory(lv -> new MessageListCell());
+        messages.addListener((ListChangeListener<MessageResponse>) change -> {
+            Platform.runLater(() -> chatView.scrollTo(messages.size() - 1));
+        });
     }
 }

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.nomis778.puddle.client.ChatViewController">
+<GridPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.nomis778.puddle.client.DashBoardController">
     <columnConstraints>
           <ColumnConstraints hgrow="ALWAYS" maxWidth="367.0" minWidth="10.0" percentWidth="30.0" prefWidth="367.0" />
           <ColumnConstraints hgrow="ALWAYS" maxWidth="775.0" minWidth="10.0" percentWidth="65.0" prefWidth="773.0" />

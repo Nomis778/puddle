@@ -25,7 +25,7 @@ public class LoginController {
 
         try {
             AuthService.logIn(username, password);
-            NavigationUtil.navigateTo(event, "chat_view.fxml");
+            NavigationUtil.navigateTo(event, "dashboard.fxml");
         } catch (RestClientException e) {
             System.out.println(e.getMessage());
         }
