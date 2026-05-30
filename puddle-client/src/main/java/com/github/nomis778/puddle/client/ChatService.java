@@ -70,8 +70,10 @@ public class ChatService {
     }
 
     public void sendMessage(String content, long matchId) {
-        MessageRequest msg = new MessageRequest(content, matchId);
-        session.send("/chat/send", msg);
+        if(!content.isBlank()) {
+            MessageRequest msg = new MessageRequest(content, matchId);
+            session.send("/chat/send", msg);
+        }
     }
 
     public ObservableList<MessageResponse> getMessages() {
