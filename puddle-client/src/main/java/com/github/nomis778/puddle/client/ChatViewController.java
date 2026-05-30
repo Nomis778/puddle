@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 
@@ -36,6 +37,8 @@ public class ChatViewController implements Initializable {
 
     @FXML
     ListView<MessageResponse> chatView;
+    @FXML
+    TextField chatField;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,6 +58,14 @@ public class ChatViewController implements Initializable {
     public void refresh() {
         refreshMatchBox();
         updateSelectedMatch();
+    }
+
+    @FXML
+    public void sendMessage() {
+        String content = chatField.getText();
+        chatField.clear();
+        long matchId = matchService.selectedMatchIdProperty().get();
+        chatService.sendMessage(content, matchId);
     }
 
     private void refreshMatchBox() {

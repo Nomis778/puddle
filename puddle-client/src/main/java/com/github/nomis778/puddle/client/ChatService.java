@@ -3,8 +3,10 @@ package com.github.nomis778.puddle.client;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.github.nomis778.puddle.client.chat.MessageRequest;
 import com.github.nomis778.puddle.client.chat.MessageResponse;
 import com.github.nomis778.puddle.client.shared.HttpSession;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
@@ -45,12 +47,12 @@ public class ChatService {
 
             @Override
             public void handleException(StompSession s, StompCommand cmd, StompHeaders h, byte[] payload, Throwable ex) {
-                System.out.println("STOMP error: " + ex.getMessage());
+                System.err.println("STOMP error: " + ex.getMessage());
             }
 
             @Override
             public void handleTransportError(StompSession s, Throwable ex) {
-                System.out.println("Transport error: " + ex.getMessage());
+                System.err.println("Transport error: " + ex.getMessage());
             }
         });
     }
@@ -63,6 +65,11 @@ public class ChatService {
         messages.addAll(fetchOldMessages(matchId));
         messages.add(new MessageResponse("Welcome to the chat!"));
         subscribe(matchId);
+    }
+
+    public void sendMessage(String content, long matchId) {
+        MessageRequest msg = new MessageRequest(content, matchId);
+        session.send("/chat/send", msg);
     }
 
     public ObservableList<MessageResponse> getMessages() {
@@ -80,7 +87,7 @@ public class ChatService {
             @Override
             public void handleFrame(StompHeaders headers, Object payload) {
                 MessageResponse msg = (MessageResponse) payload;
-                System.out.println("(%s) %s: %s".formatted(msg.getTimeStamp(), msg.getSender().username(), msg.getContent()));
+                Platform.runLater(() -> messages.add(msg));
             }
         });
     }
