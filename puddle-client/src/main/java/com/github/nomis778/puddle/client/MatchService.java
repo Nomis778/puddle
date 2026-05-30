@@ -3,13 +3,9 @@ package com.github.nomis778.puddle.client;
 import com.github.nomis778.puddle.client.shared.HttpSession;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TitledPane;
-import javafx.scene.layout.VBox;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClient;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
