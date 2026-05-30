@@ -25,6 +25,10 @@ public class HttpSession {
         HttpSession.jwt = jwt;
     }
 
+    public static String getJwt() {
+        return jwt;
+    }
+
     public static void clearJwt() {
         jwt = null;
     }
