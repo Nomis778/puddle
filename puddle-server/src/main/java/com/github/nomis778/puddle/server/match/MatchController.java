@@ -28,8 +28,8 @@ public class MatchController {
         return new ResponseEntity<>(matches, HttpStatus.OK);
     }
 
-    @GetMapping("/matches/{id}")
-    public ResponseEntity<?> getMatchById(@PathVariable long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getMatchById(@PathVariable("id") long id) {
         try {
             Match m = matchService.getMatch(id);
             return new ResponseEntity<>(m, HttpStatus.OK);
