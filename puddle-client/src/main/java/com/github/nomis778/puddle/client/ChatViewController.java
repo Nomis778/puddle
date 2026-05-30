@@ -3,10 +3,14 @@ package com.github.nomis778.puddle.client;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,21 +25,39 @@ public class ChatViewController implements Initializable {
     @FXML
     VBox matchBox;
 
+    @FXML
+    Label homeTeamName;
+    @FXML
+    Label homeScore;
+    @FXML
+    Label awayTeamName;
+    @FXML
+    Label awayScore;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        matchService.selectedMatchIdProperty().addListener((obs, old, newVal) -> {
+            updateSelectedMatch();
+        });
         refreshMatchBox();
     }
 
     @FXML
-    public void refreshMatchBox() {
+    public void refresh() {
+        refreshMatchBox();
+        updateSelectedMatch();
+    }
+
+    private void refreshMatchBox() {
         CompletableFuture
                 .supplyAsync(matchService::fetchMatchesByCompetition)
-                .thenAccept(result -> Platform.runLater(() -> populateBox(result)));
+                .thenAccept(matches -> Platform.runLater(() -> {
+                    clearBox();
+                    populateBox(matches);
+                }));
     }
 
     private void populateBox(Map<String, List<Match>> matchesByCompetition) {
-        clearBox();
-
         matchesByCompetition.forEach((competition, matchList) -> {
             ListView<Match> listView = new ListView<>();
             listView.getItems().addAll(matchList);
@@ -66,5 +88,23 @@ public class ChatViewController implements Initializable {
     private void clearBox() {
         allListViews.clear();
         matchBox.getChildren().clear();
+    }
+
+    private void updateSelectedMatch() {
+        CompletableFuture
+                .supplyAsync(matchService::fetchSelectedMatch)
+                .thenAccept(match -> Platform.runLater(() -> {
+                    homeTeamName.setText(match.homeTeam().shortName());
+                    awayTeamName.setText(match.awayTeam().shortName());
+
+                    Match.Score score = match.score();
+                    if(score != null) {
+                        homeScore.setText(score.homeScore() + "");
+                        awayScore.setText(score.awayScore() + "");
+                    } else {
+                        homeScore.setText("");
+                        awayScore.setText("");
+                    }
+                }));
     }
 }
