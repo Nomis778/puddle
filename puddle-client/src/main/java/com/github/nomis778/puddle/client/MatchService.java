@@ -24,6 +24,15 @@ public class MatchService {
         populateBoxWithMatches(box);
     }
 
+    public Match getSelectedMatch() {
+        RestClient client = HttpSession.getClient();
+        ResponseEntity<Match> matches = client.get()
+                .uri("/matches/" + selectedMatchId)
+                .retrieve()
+                .toEntity(Match.class);
+        return matches.getBody();
+    }
+
     private void updateMatches() {
         RestClient client = HttpSession.getClient();
         ResponseEntity<Match[]> matches = client.get()

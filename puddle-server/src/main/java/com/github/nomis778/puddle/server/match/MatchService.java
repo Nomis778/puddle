@@ -2,10 +2,13 @@ package com.github.nomis778.puddle.server.match;
 
 import com.github.nomis778.puddle.server.api.ApiService;
 import com.github.nomis778.puddle.server.match.model.Match;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MatchService {
@@ -50,5 +53,12 @@ public class MatchService {
 
     public List<Match> getCurrentMatches() {
         return matchRepository.findAll();
+    }
+
+    public Match getMatch(long id) {
+        Optional<Match> m = matchRepository.findById(id);
+        if(m.isEmpty())
+            throw new EntityNotFoundException("Error: No such match exists!");
+        return m.get();
     }
 }
