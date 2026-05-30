@@ -1,7 +1,9 @@
 package com.github.nomis778.puddle.client;
 
 import com.github.nomis778.puddle.client.shared.HttpSession;
+import javafx.beans.property.LongProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClient;
@@ -12,7 +14,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MatchService {
-    private final ObjectProperty<Long> selectedMatchId = new SimpleObjectProperty<>();
+    private final LongProperty selectedMatchId = new SimpleLongProperty();
 
     public Map<String, List<Match>> fetchMatchesByCompetition() {
         RestClient client = HttpSession.getClient();
@@ -34,7 +36,7 @@ public class MatchService {
         return matches.getBody();
     }
 
-    public ObjectProperty<Long> selectedMatchIdProperty() {
+    public LongProperty selectedMatchIdProperty() {
         return selectedMatchId;
     }
 }
