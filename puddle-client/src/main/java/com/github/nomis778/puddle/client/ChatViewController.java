@@ -1,16 +1,14 @@
 package com.github.nomis778.puddle.client;
 
+import com.github.nomis778.puddle.client.chat.MessageResponse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +19,8 @@ import java.util.concurrent.CompletableFuture;
 public class ChatViewController implements Initializable {
     private final MatchService matchService = new MatchService();
     private ArrayList<ListView<Match>> allListViews = new ArrayList<>();
+
+    private ChatService chatService = new ChatService();
 
     @FXML
     VBox matchBox;
@@ -34,12 +34,21 @@ public class ChatViewController implements Initializable {
     @FXML
     Label awayScore;
 
+    @FXML
+    ListView<MessageResponse> chatView;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         matchService.selectedMatchIdProperty().addListener((obs, old, newVal) -> {
             updateSelectedMatch();
         });
         refreshMatchBox();
+
+        matchService.selectedMatchIdProperty().addListener((obs, old, newVal) -> {
+            chatService.connectToMatch((long) newVal);
+        });
+        chatView.setItems(chatService.getMessages());
+        chatView.setCellFactory(lv -> new MessageListCell());
     }
 
     @FXML
