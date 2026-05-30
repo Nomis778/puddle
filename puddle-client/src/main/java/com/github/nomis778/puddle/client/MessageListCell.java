@@ -6,8 +6,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 
 import java.time.LocalDateTime;
-import java.time.format.TextStyle;
-import java.util.Locale;
 
 public class MessageListCell extends ListCell<MessageResponse> {
     @Override
