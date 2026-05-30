@@ -19,6 +19,7 @@ import org.springframework.web.socket.messaging.WebSocketStompClient;
 
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
+import java.util.TimeZone;
 
 public class ChatService {
     private static final String WS_URL = "ws://localhost:8080/ws";
@@ -35,6 +36,7 @@ public class ChatService {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        mapper.setTimeZone(TimeZone.getDefault());
         converter.setObjectMapper(mapper);
         stompClient.setMessageConverter(converter);
 
@@ -70,7 +72,7 @@ public class ChatService {
     }
 
     public void sendMessage(String content, long matchId) {
-        if(!content.isBlank()) {
+        if(!content.isBlank() && matchId != 0) {
             MessageRequest msg = new MessageRequest(content, matchId);
             session.send("/chat/send", msg);
         }
