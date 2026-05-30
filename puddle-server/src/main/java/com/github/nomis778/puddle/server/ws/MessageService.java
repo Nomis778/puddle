@@ -5,8 +5,13 @@ import com.github.nomis778.puddle.server.user.model.User;
 import com.github.nomis778.puddle.server.ws.model.Message;
 import com.github.nomis778.puddle.server.ws.model.MessageRequest;
 import com.github.nomis778.puddle.server.ws.model.MessageResponse;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MessageService {
@@ -32,5 +37,13 @@ public class MessageService {
         MessageResponse msgResponse = new MessageResponse(msg);
         long matchId = msgRequest.getMatchId();
         messagingTemplate.convertAndSend("/topic/" + matchId, msgResponse);
+    }
+
+    public List<MessageResponse> getMessages(long matchId) {
+        List<Message> messages = messageRepository.findAllByMatchId(matchId);
+        List<MessageResponse> msgResponses = messages.stream()
+                .map(MessageResponse::new)
+                .toList();
+        return msgResponses;
     }
 }

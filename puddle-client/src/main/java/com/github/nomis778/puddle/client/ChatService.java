@@ -9,8 +9,10 @@ import com.github.nomis778.puddle.client.shared.HttpSession;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.simp.stomp.*;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.socket.WebSocketHttpHeaders;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 import org.springframework.web.socket.messaging.WebSocketStompClient;
@@ -93,10 +95,11 @@ public class ChatService {
     }
 
     private MessageResponse[] fetchOldMessages(long matchId) {
-        MessageResponse mr = new MessageResponse();
-        mr.setSender(new PublicUser(1, "SVERKER"));
-        mr.setContent("OLD MESSAGEadwa");
-        mr.setTimeStamp(LocalDateTime.now());
-        return new MessageResponse[] {mr};
+        RestClient client = HttpSession.getClient();
+        ResponseEntity<MessageResponse[]> messages = client.get()
+                .uri("/messages/" + matchId)
+                .retrieve()
+                .toEntity(MessageResponse[].class);
+        return messages.getBody();
     }
 }
