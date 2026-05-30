@@ -29,7 +29,7 @@
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin></VBox>
-      <TextField fx:id="chatField" maxHeight="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField fx:id="chatField" maxHeight="1.7976931348623157E308" onAction="#sendMessage" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" top="10.0" />
          </GridPane.margin>
