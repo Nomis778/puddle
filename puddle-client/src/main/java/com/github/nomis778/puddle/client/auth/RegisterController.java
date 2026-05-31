@@ -27,7 +27,6 @@ public class RegisterController {
     public void registerAndLogIn(ActionEvent event) throws IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        passwordField.clear();
 
         if(username.isBlank() || password.isBlank())
             return;
