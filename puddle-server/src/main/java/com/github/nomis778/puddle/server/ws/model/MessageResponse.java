@@ -2,13 +2,13 @@ package com.github.nomis778.puddle.server.ws.model;
 
 import com.github.nomis778.puddle.server.user.model.PublicUser;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 public class MessageResponse {
     private PublicUser sender;
     private long matchId;
     private String content;
-    LocalDateTime timeStamp;
+    Instant timeStamp;
 
     public MessageResponse() {}
 
@@ -43,11 +43,11 @@ public class MessageResponse {
         this.content = content;
     }
 
-    public LocalDateTime getTimeStamp() {
+    public Instant getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(LocalDateTime timeStamp) {
+    public void setTimeStamp(Instant timeStamp) {
         this.timeStamp = timeStamp;
     }
 }

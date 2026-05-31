@@ -1,8 +1,12 @@
 package com.github.nomis778.puddle.client.chat;
 
 import com.github.nomis778.puddle.client.PublicUser;
+import com.sun.scenario.effect.Offset;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 
 public class MessageResponse {
     private PublicUser sender;
@@ -46,5 +50,12 @@ public class MessageResponse {
 
     public void setTimeStamp(LocalDateTime timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public ZonedDateTime getLocalTimeStamp() {
+        if(timeStamp == null)
+            return null;
+        return timeStamp.atZone(ZoneOffset.UTC)
+                .withZoneSameInstant(ZoneId.systemDefault());
     }
 }

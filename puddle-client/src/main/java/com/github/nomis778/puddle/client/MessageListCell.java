@@ -6,6 +6,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class MessageListCell extends ListCell<MessageResponse> {
     @Override
@@ -18,7 +19,7 @@ public class MessageListCell extends ListCell<MessageResponse> {
 
         HBox row = new HBox(10);
 
-        LocalDateTime timeStamp = msg.getTimeStamp();
+        ZonedDateTime timeStamp = msg.getLocalTimeStamp();
         if(timeStamp != null) {
             Label timeLabel = new Label("[%02d:%02d]".formatted(timeStamp.getHour(), timeStamp.getMinute()));
             row.getChildren().add(timeLabel);

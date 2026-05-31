@@ -36,7 +36,6 @@ public class ChatService {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        mapper.setTimeZone(TimeZone.getDefault());
         converter.setObjectMapper(mapper);
         stompClient.setMessageConverter(converter);
 
