@@ -27,6 +27,9 @@ public class LoginController {
         String password = passwordField.getText();
         passwordField.clear();
 
+        if(username.isBlank() || password.isBlank())
+            return;
+
         try {
             AuthService.logIn(username, password);
             NavigationUtil.navigateTo(event, "dashboard/dashboard.fxml");

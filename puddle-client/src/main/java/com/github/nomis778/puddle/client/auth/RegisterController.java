@@ -29,6 +29,9 @@ public class RegisterController {
         String password = passwordField.getText();
         passwordField.clear();
 
+        if(username.isBlank() || password.isBlank())
+            return;
+
         try {
             AuthService.register(username, password);
             AuthService.logIn(username, password);
