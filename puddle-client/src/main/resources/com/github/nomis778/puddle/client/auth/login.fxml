@@ -6,13 +6,18 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" prefHeight="350.0" prefWidth="300.0" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.nomis778.puddle.client.auth.LoginController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label text="Welcome to Puddle!" />
+    <Label text="Welcome to Puddle!">
+        <font>
+            <Font size="18.0" />
+        </font></Label>
+    <Label fx:id="errorLabel" textFill="#e42121" />
     <TextField fx:id="usernameField" promptText="Username" />
     <PasswordField fx:id="passwordField" promptText="Password" />
     <Button mnemonicParsing="false" onAction="#logIn" prefHeight="25.0" prefWidth="150.0" text="Log in" />
