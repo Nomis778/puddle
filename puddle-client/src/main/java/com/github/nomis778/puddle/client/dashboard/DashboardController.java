@@ -111,6 +111,11 @@ public class DashboardController implements Initializable {
         });
     }
 
+    private void clearBox() {
+        allListViews.clear();
+        matchBox.getChildren().clear();
+    }
+
     private void onMatchSelected(ListView<Match> source, Match match) {
         matchService.selectedMatchIdProperty().setValue(match.id());
 
@@ -120,11 +125,6 @@ public class DashboardController implements Initializable {
             if(lv != source)
                 lv.getSelectionModel().clearSelection();
         }
-    }
-
-    private void clearBox() {
-        allListViews.clear();
-        matchBox.getChildren().clear();
     }
 
     private void updateSelectedMatch() {
