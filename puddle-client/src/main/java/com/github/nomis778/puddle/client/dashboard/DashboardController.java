@@ -80,6 +80,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     public void logOut(ActionEvent event) throws IOException {
+        chatService.disconnect();
         HttpSession.clearJwt();
         NavigationUtil.navigateTo(event,"auth/login.fxml");
     }
