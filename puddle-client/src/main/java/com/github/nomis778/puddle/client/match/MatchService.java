@@ -1,10 +1,9 @@
-package com.github.nomis778.puddle.client;
+package com.github.nomis778.puddle.client.match;
 
+import com.github.nomis778.puddle.client.match.model.Match;
 import com.github.nomis778.puddle.client.shared.HttpSession;
 import javafx.beans.property.LongProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClient;
 

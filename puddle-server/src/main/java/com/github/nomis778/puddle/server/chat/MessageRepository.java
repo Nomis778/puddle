@@ -1,7 +1,6 @@
-package com.github.nomis778.puddle.server.ws;
+package com.github.nomis778.puddle.server.chat;
 
-import com.github.nomis778.puddle.server.ws.model.Message;
-import com.github.nomis778.puddle.server.ws.model.MessageResponse;
+import com.github.nomis778.puddle.server.chat.model.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

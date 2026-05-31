@@ -1,6 +1,6 @@
 package com.github.nomis778.puddle.server.api;
 
-import com.github.nomis778.puddle.server.api.model.MatchResponse;
+import com.github.nomis778.puddle.server.api.model.ApiMatchResponse;
 import com.github.nomis778.puddle.server.match.model.Match;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,14 +30,14 @@ public class ApiService {
         String dateFrom = today.minusDays(4).toString();
         String dateTo = today.minusDays(2).toString();
 
-        MatchResponse mr = footballAPI.get()
+        ApiMatchResponse mr = footballAPI.get()
                 .uri(uri -> uri
                         .path("/matches")
                         .queryParam("dateFrom", dateFrom)
                         .queryParam("dateTo", dateTo)
                         .build())
                 .header("X-Auth-Token", apiKey)
-                .retrieve().body(MatchResponse.class);
+                .retrieve().body(ApiMatchResponse.class);
 
         return mr.matches();
     }
@@ -47,14 +47,14 @@ public class ApiService {
         String dateFrom = today.minusDays(2).toString();
         String dateTo = today.plusDays(2).toString();
 
-        MatchResponse mr = footballAPI.get()
+        ApiMatchResponse mr = footballAPI.get()
                 .uri(uri -> uri
                         .path("/matches")
                         .queryParam("dateFrom", dateFrom)
                         .queryParam("dateTo", dateTo)
                         .build())
                 .header("X-Auth-Token", apiKey)
-                .retrieve().body(MatchResponse.class);
+                .retrieve().body(ApiMatchResponse.class);
 
         return mr.matches();
     }

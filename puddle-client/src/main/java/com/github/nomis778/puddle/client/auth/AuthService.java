@@ -1,5 +1,6 @@
 package com.github.nomis778.puddle.client.auth;
 
+import com.github.nomis778.puddle.client.auth.model.LoginDetails;
 import com.github.nomis778.puddle.client.shared.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClient;

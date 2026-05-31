@@ -1,10 +1,10 @@
-package com.github.nomis778.puddle.client;
+package com.github.nomis778.puddle.client.chat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.github.nomis778.puddle.client.chat.MessageRequest;
-import com.github.nomis778.puddle.client.chat.MessageResponse;
+import com.github.nomis778.puddle.client.chat.model.MessageRequest;
+import com.github.nomis778.puddle.client.chat.model.MessageResponse;
 import com.github.nomis778.puddle.client.shared.HttpSession;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -18,8 +18,6 @@ import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 import org.springframework.web.socket.messaging.WebSocketStompClient;
 
 import java.lang.reflect.Type;
-import java.time.LocalDateTime;
-import java.util.TimeZone;
 
 public class ChatService {
     private static final String WS_URL = "ws://localhost:8080/ws";

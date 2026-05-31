@@ -1,10 +1,9 @@
-package com.github.nomis778.puddle.client;
+package com.github.nomis778.puddle.client.match.model;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.TextStyle;
 import java.util.Locale;

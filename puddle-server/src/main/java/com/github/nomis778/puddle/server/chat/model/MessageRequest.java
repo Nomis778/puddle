@@ -1,8 +1,6 @@
-package com.github.nomis778.puddle.server.ws.model;
+package com.github.nomis778.puddle.server.chat.model;
 
 import com.github.nomis778.puddle.server.user.model.User;
-
-import java.time.LocalDateTime;
 
 public class MessageRequest {
     private String content;

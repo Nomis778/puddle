@@ -1,11 +1,9 @@
-package com.github.nomis778.puddle.client;
+package com.github.nomis778.puddle.client.chat.model;
 
-import com.github.nomis778.puddle.client.chat.MessageResponse;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 public class MessageListCell extends ListCell<MessageResponse> {

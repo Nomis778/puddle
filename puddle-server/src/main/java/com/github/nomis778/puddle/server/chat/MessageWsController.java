@@ -1,7 +1,6 @@
-package com.github.nomis778.puddle.server.ws;
+package com.github.nomis778.puddle.server.chat;
 
-import com.github.nomis778.puddle.server.ws.model.Message;
-import com.github.nomis778.puddle.server.ws.model.MessageRequest;
+import com.github.nomis778.puddle.server.chat.model.MessageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -10,11 +9,11 @@ import org.springframework.stereotype.Controller;
 import java.security.Principal;
 
 @Controller
-public class MessageController {
+public class MessageWsController {
     MessageService messageService;
 
     @Autowired
-    public MessageController(MessageService messageService) {
+    public MessageWsController(MessageService messageService) {
         this.messageService = messageService;
     }
 

@@ -1,6 +1,11 @@
-package com.github.nomis778.puddle.client;
+package com.github.nomis778.puddle.client.dashboard;
 
-import com.github.nomis778.puddle.client.chat.MessageResponse;
+import com.github.nomis778.puddle.client.chat.ChatService;
+import com.github.nomis778.puddle.client.chat.model.MessageResponse;
+import com.github.nomis778.puddle.client.chat.model.MessageListCell;
+import com.github.nomis778.puddle.client.match.model.Match;
+import com.github.nomis778.puddle.client.match.model.MatchListCell;
+import com.github.nomis778.puddle.client.match.MatchService;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -18,7 +23,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.concurrent.CompletableFuture;
 
-public class DashBoardController implements Initializable {
+public class DashboardController implements Initializable {
     private final MatchService matchService = new MatchService();
     private ArrayList<ListView<Match>> allListViews = new ArrayList<>();
 

@@ -1,4 +1,4 @@
-package com.github.nomis778.puddle.server.ws;
+package com.github.nomis778.puddle.server.chat;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

@@ -1,4 +1,4 @@
-package com.github.nomis778.puddle.client;
+package com.github.nomis778.puddle.client.match.model;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

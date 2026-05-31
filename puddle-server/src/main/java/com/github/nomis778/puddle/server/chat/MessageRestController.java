@@ -1,6 +1,6 @@
-package com.github.nomis778.puddle.server.ws;
+package com.github.nomis778.puddle.server.chat;
 
-import com.github.nomis778.puddle.server.ws.model.MessageResponse;
+import com.github.nomis778.puddle.server.chat.model.MessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

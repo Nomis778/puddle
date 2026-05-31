@@ -1,7 +1,4 @@
-package com.github.nomis778.puddle.client.chat;
-
-import com.github.nomis778.puddle.client.PublicUser;
-import com.sun.scenario.effect.Offset;
+package com.github.nomis778.puddle.client.chat.model;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

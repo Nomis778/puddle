@@ -1,17 +1,14 @@
-package com.github.nomis778.puddle.server.ws;
+package com.github.nomis778.puddle.server.chat;
 
 import com.github.nomis778.puddle.server.user.UserService;
 import com.github.nomis778.puddle.server.user.model.User;
-import com.github.nomis778.puddle.server.ws.model.Message;
-import com.github.nomis778.puddle.server.ws.model.MessageRequest;
-import com.github.nomis778.puddle.server.ws.model.MessageResponse;
-import jakarta.persistence.EntityNotFoundException;
+import com.github.nomis778.puddle.server.chat.model.Message;
+import com.github.nomis778.puddle.server.chat.model.MessageRequest;
+import com.github.nomis778.puddle.server.chat.model.MessageResponse;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class MessageService {
