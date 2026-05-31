@@ -76,13 +76,8 @@ public class ChatService {
     }
 
     public void disconnect() {
-        if(activeSub != null){
-            activeSub.unsubscribe();
-            activeSub = null;
-        }
-        if (session != null && session.isConnected()) {
+        if (session != null && session.isConnected())
             session.disconnect();
-        }
         stompClient.stop();
     }
 
