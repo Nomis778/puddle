@@ -1,6 +1,5 @@
 package com.github.nomis778.puddle.server.user;
 
-import com.github.nomis778.puddle.server.user.model.PublicUser;
 import com.github.nomis778.puddle.server.user.model.User;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;

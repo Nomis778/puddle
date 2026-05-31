@@ -8,7 +8,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.springframework.web.client.RestClientException;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class LoginController {

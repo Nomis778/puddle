@@ -1,11 +1,7 @@
 package com.github.nomis778.puddle.server.match.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Embeddable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.annotation.Transient;
 
 import java.util.Map;
 

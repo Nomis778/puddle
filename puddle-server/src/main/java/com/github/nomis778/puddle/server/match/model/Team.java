@@ -1,6 +1,7 @@
 package com.github.nomis778.puddle.server.match.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Team {

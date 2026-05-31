@@ -1,10 +1,10 @@
 package com.github.nomis778.puddle.server.chat;
 
-import com.github.nomis778.puddle.server.user.UserService;
-import com.github.nomis778.puddle.server.user.model.User;
 import com.github.nomis778.puddle.server.chat.model.Message;
 import com.github.nomis778.puddle.server.chat.model.MessageRequest;
 import com.github.nomis778.puddle.server.chat.model.MessageResponse;
+import com.github.nomis778.puddle.server.user.UserService;
+import com.github.nomis778.puddle.server.user.model.User;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
