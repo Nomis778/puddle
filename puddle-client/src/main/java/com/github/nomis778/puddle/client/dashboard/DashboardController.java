@@ -13,6 +13,7 @@ import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -109,11 +110,17 @@ public class DashboardController implements Initializable {
             TitledPane pane = new TitledPane(competition, listView);
             matchBox.getChildren().add(pane);
         });
+
+        if(matchBox.getChildren().isEmpty()) {
+            matchBox.getChildren().add(new Label("There are currently no matches available!"));
+            matchBox.setAlignment(Pos.CENTER);
+        }
     }
 
     private void clearBox() {
         allListViews.clear();
         matchBox.getChildren().clear();
+        matchBox.setAlignment(Pos.TOP_LEFT);
     }
 
     private void onMatchSelected(ListView<Match> source, Match match) {
